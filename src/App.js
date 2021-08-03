@@ -42,7 +42,7 @@ function App() {
   }, [selectedIndex, pokemons]);
 
   const getNextPokemon = () => {
-    if (selectedIndex === pokemons.length) {
+    if (selectedIndex === pokemons.length - 1) {
       alert("That's it folks!!");
       return;
     }
@@ -58,7 +58,7 @@ function App() {
   }
 
   const pokemonCaptured = () => {
-    if (selectedIndex === pokemons.length) {
+    if (selectedIndex === pokemons.length - 1) {
       setSelectedIndex(prevValue => prevValue - 1);
     } else {
       setSelectedIndex(prevValue => prevValue + 1);
