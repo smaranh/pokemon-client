@@ -51,11 +51,20 @@ function App() {
     setSelectedIndex(prevValue => prevValue - 1);
   }
 
+  const pokemonCaptured = () => {
+    if (selectedIndex === pokemons.length) {
+      setSelectedIndex(prevValue => prevValue - 1);
+    } else {
+      setSelectedIndex(prevValue => prevValue + 1);
+    }
+  }
+
   return (
     <div className="container">
       <div className="header">Catch `em All</div>
       {currentPokemon && <SlideShow pokemon={currentPokemon}
-        nextClicked={getNextPokemon} prevClicked={getPrevPokemon}/>}
+        nextClicked={getNextPokemon} prevClicked={getPrevPokemon}
+        onCaptured={pokemonCaptured}/>}
     </div>
   );
 }
