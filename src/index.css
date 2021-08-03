@@ -18,16 +18,24 @@ body {
   border: 1px solid steelblue;
   padding: 30px;
   border-radius: 5px;
-  text-align: center;
 }
 
 .header {
   margin-bottom: 20px;
   text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+  font-style: italic;
+  font-family: fantasy;
+}
+
+.title {
+  text-align: center;
 }
 
 .carousel {
   display: flex;
+  justify-content: space-around;
 }
 
 .btn {
@@ -54,4 +62,33 @@ body {
 .btn-block {
   display: block;
   width: 100%;
+}
+
+.tabOptions {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 50px;
+}
+
+.tabOptions div {
+  cursor: pointer;
+  padding: 10px;
+  outline: dotted gray;
+}
+
+.tabOptions .selected {
+  outline: solid orange;
+  border-radius: 2px;
+  background-color: orange;
+}
+
+.entry {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.list {
+  max-height: 350px;
+  overflow-y: scroll;
 }

@@ -23,13 +23,16 @@ export const SlideShow = ({pokemon, nextClicked, prevClicked, onCaptured}) => {
     
     return (
         <>
-            <div className='title'>{pokemon.name.toUpperCase()}</div>
-            <div className='carousel'>
-                <button className="btn" onClick={prevClicked}>{'<'}</button>
-                <img className="" src={pokemon.url} alt="Pokemon"/>
-                <button className="btn" onClick={nextClicked}>{'>'}</button>
+            <div className="header">Catch `em All</div>
+            <div>
+                <div className='title'>{pokemon.name.toUpperCase()}</div>
+                <div className='carousel'>
+                    <button className="btn" onClick={prevClicked}>{'<'}</button>
+                    <img src={pokemon.url} alt="Pokemon"/>
+                    <button className="btn" onClick={nextClicked}>{'>'}</button>
+                </div>
+                <button className="btn btn-block" onClick={capturePokemon}>Capture</button>
             </div>
-            <button className="btn btn-block" onClick={capturePokemon}>Capture</button>
         </>
     )
 }

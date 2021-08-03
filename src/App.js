@@ -1,12 +1,18 @@
+import { useState, useEffect } from "react";
 import './App.css';
 import { SlideShow } from "./components/slideShow";
-import { useState, useEffect } from "react";
+import { Profile } from "./components/profile";
 
+const Tabs = {
+  Profile: 'profile',
+  Hunt: 'hunt'
+}
 function App() {
 
   const [pokemons, setPokemons] = useState([]);
   const [currentPokemon, setCurrentPokemon] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(null);
+  const [selectedTab, setSelectedTab] = useState(Tabs.Profile);
 
   useEffect(() => {
     const fetchPokemons = async () => {
@@ -59,12 +65,25 @@ function App() {
     }
   }
 
+  const isTabSelected = (value) => {
+    return selectedTab === value;
+  }
+
   return (
     <div className="container">
-      <div className="header">Catch `em All</div>
-      {currentPokemon && <SlideShow pokemon={currentPokemon}
-        nextClicked={getNextPokemon} prevClicked={getPrevPokemon}
-        onCaptured={pokemonCaptured}/>}
+      <div className="tabOptions">
+        <div className={ isTabSelected(Tabs.Profile) ? 'selected' : '' } 
+          onClick={() => setSelectedTab(Tabs.Profile)}>Trainer Profile</div>
+        <div className={ isTabSelected(Tabs.Hunt) ? 'selected' : '' }
+          onClick={() => setSelectedTab(Tabs.Hunt)}>Hunt Pokemons</div>
+      </div>
+      {selectedTab === Tabs.Profile && 
+        <Profile />}
+      {selectedTab === Tabs.Hunt && <div>
+        {currentPokemon && <SlideShow pokemon={currentPokemon}
+          nextClicked={getNextPokemon} prevClicked={getPrevPokemon}
+          onCaptured={pokemonCaptured}/>}
+      </div>}
     </div>
   );
 }
